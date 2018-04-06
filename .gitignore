@@ -1,0 +1,10 @@
+# Flask stuff:
+instance/
+.webassets-cache
+
+# pyenv
+.python-version
+
+
+# files
+*.swp

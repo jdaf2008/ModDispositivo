@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+
+import httplib2
+import json
+import time
+import datetime
+
+
+def main():
+	
+	""" Client RestFul """
+	httplib2.debuglevel = 0
+	http = httplib2.Http() 
+	content_type_header = "application/json"
+
+	url = ""
+
+	data = {    'room':         "Living Room",
+	            'temp':         23.45,
+	            'humidity':     50.00,
+	            'timestamp':    str(datetime.datetime.now())
+	       }
+
+	headers = {'Content-Type': content_type_header}
+	print ("Posting %s" % data)
+
+	response, content = http.request(url, 'POST', json.dumps(data), headers=headers)
+	print(response)
+	print(content)
+
+
+if __name__ == '__main__':
+
+	main()
+
+

@@ -4,8 +4,7 @@ import httplib2
 import json
 import time
 import datetime
-import MCP342X, wind_direction, HTU21D, bmp085, tgs2600, ds18b20_therm
-import database
+from bmp085 import bmp085
 
 URL_BASE = "http://ec2-54-202-254-90.us-west-2.compute.amazonaws.com:8080/"
 URL_API = "/backendAmbiente/webresources/generic/"
@@ -15,11 +14,6 @@ URL_NAME_METHOD = "saveMedicion"
 def getSensorData():
 
 	pressure = bmp085.BMP085()
-	temp_probe = ds18b20_therm.DS18B20()
-	air_qual = tgs2600.TGS2600(adc_channel = 0)
-	humidity = HTU21D.HTU21D()
-	wind_dir = wind_direction.wind_direction(adc_channel = 0, config_file="wind_direction.json")
-	interrupts = interrupt_client.interrupt_client(port = 49501)
 
 def requestPost():
 
@@ -33,9 +27,9 @@ def requestPost():
 	
 	data = 	{
 				"idSensor":1,         
-				"TipoSensor":,   
+				"TipoSensor":"presionAtm",   
 				"Fecha":"2018-04-05",
-				"datoObtenido":20.3,  
+				"datoObtenido":2,  
 				"Hora":"11:00:00"
 			}
 

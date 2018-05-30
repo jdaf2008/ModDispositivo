@@ -15,19 +15,19 @@ URL_NAME_METHOD = "saveMedicion"
 
 def getSensorData():
 
-        presion = Sensor("1","presion",bmp085.BMP085().get_pressure())
+        presion = Sensor("1","presion",bmp085.BMP085().get_pressure(),"true")
         requestPost(presion);
-        temp = Sensor("2","temperatura", ds18b20_therm.DS18B20().read_temp())
+        temp = Sensor("2","temperatura", ds18b20_therm.DS18B20().read_temp(),"true")
         requestPost(temp)
-        air = Sensor("3","calidadAire",tgs2600.TGS2600(adc_channel = 0).get_value())
+        air = Sensor("3","calidadAire",tgs2600.TGS2600(adc_channel = 0).get_value(),"true")
         requestPost(air)
-        humidity = Sensor("4","humedad",HTU21D.HTU21D().read_temperature())
+        humidity = Sensor("4","humedad",HTU21D.HTU21D().read_temperature(),"true")
 	requestPost(humidity)
-        metano = Sensor("5", "metano",getMetano())
+        metano = Sensor("5", "metano",getMetano(),"true")
         requestPost(metano)
-        noise = Sensor("6","ruido",getNoise())
+        noise = Sensor("6","ruido",getNoise(),"true")
         requestPost(noise)
-        air2 = Sensor("7","calidadAire2", getAirQ())
+        air2 = Sensor("7","calidadAire2", getAirQ(),"true")
         requestPost(air2)
 
 def requestPost(sensor):

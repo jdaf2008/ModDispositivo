@@ -1,0 +1,19 @@
+[
+  {
+    "_idSensor": "1",
+    "_nombre": "presion",
+    "_status": true,
+    "_direcccion": "alcala",
+    "_unidades": "alcala",
+    "_descripcion": "adassadasfasfas"
+  },
+  {
+    "_idSensor": "2",
+    "_nombre": "temperatura",
+    "_status": false,
+    "_direcccion": "alcala",
+    "_unidades": "ppm",
+    "_descripcion": "asdsaddsad"
+  }
+]
+

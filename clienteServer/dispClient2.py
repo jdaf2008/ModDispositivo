@@ -16,8 +16,8 @@ import interrupt_client, MCP342X, wind_direction, HTU21D, bmp085, tgs2600, ds18b
 URL_BASE = "http://ec2-54-202-254-90.us-west-2.compute.amazonaws.com:8080/"
 URL_API = "/backendAmbiente/webresources/generic/"
 URL_NAME_METHOD = "saveMedicion"
-# dirJSON = "./ModDispositivo/clienteServer/testSensores.JSON"
-dirJSON = "testSensores.JSON"
+dirJSON = "./ModStandAlone/ControlSensores/ControlSensores/dist/sensores.JSON"
+# dirJSON = "testSensores.JSON"
 
 def getSensorData():
 
@@ -33,11 +33,13 @@ def getSensorData():
 
 def getState(sensors): 
     with open(dirJSON) as f:
+            print("entro")
             data = json.load(f)
             for item in data:
                 for sensor in sensors:
-                    if sensor.idSensor == item["_idSensor"]:
+                    if sensor.idSensor == str(item["_idSensor"]):
                         sensor.estado = item["_status"]
+           
     return sensors
 
 def requestPost(sensors):
@@ -67,7 +69,7 @@ def requestPost(sensors):
 	print ("Posting %s" % data)
         
         if sensor.valor != "-":
-            if sensor.estado == True:
+            if (sensor.estado == True) or (sensor.estado == "true"):
                 try:
                     response, content = http.request(url, 'POST', json.dumps(data), headers=headers)
                     print(response)
